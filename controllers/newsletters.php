@@ -23,7 +23,8 @@ class Newsletters extends Public_Controller
 	
 	//show a list of all newsletters
 	public function index()
-	{
+	{	
+		$data = new StdClass;
 		$data->newsletters = $this->newsletters_m->get_newsletters(array('order'=>'created_on DESC'));
 
 		$this->template->build('index', $data);
@@ -32,6 +33,7 @@ class Newsletters extends Public_Controller
 	//Display newsletter for users that wish to read on the website
 	public function archive($id = '')
 	{
+		$data = new StdClass;
 		$data->newsletter = $this->newsletters_m->get_newsletter($id, $data);
 
 		if($data->newsletter)
